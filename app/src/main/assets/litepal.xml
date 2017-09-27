@@ -1,0 +1,12 @@
+<litepal>
+    <dbname value="cg_weahter"></dbname>
+    <version value="1"></version>
+    <list>
+        <mapping class="android.cgweather.com.cgweather.db.City"></mapping>
+        <mapping class="android.cgweather.com.cgweather.db.Province"></mapping>
+        <mapping class="android.cgweather.com.cgweather.db.County"></mapping>
+
+
+    </list>
+
+</litepal>
