@@ -1,10 +1,12 @@
 package android.cgweather.com.cgweather.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Administrator on 2017/9/28.
  */
 
-public class City {
+public class City  extends DataSupport {
         private int id;
         private String cityName;
         private int cityCode;
