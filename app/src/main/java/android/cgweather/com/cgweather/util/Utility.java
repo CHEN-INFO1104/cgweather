@@ -1,9 +1,13 @@
 package android.cgweather.com.cgweather.util;
 
+import android.cgweather.com.cgweather.ChooseAreaFragment;
 import android.cgweather.com.cgweather.db.City;
 import android.cgweather.com.cgweather.db.County;
 import android.cgweather.com.cgweather.db.Province;
 import android.text.TextUtils;
+import android.util.Log;
+
+import com.bumptech.glide.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +30,7 @@ public class Utility {
                     province.setProvinceCode(provinceObject.getInt("id"));
                     province.save();
                 }
-
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -49,7 +53,7 @@ public class Utility {
                     city.save();
 
                 }
-
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -59,7 +63,7 @@ public class Utility {
 
     }
 
-    public static boolean handleCountyResponse(String response,int  cityId){
+    public static boolean handleCountyResponse(String response,int cityId){
         if (!TextUtils.isEmpty(response)){
             try {
                 JSONArray allCounties = new JSONArray(response);
@@ -71,6 +75,7 @@ public class Utility {
                     county.setCityId(cityId);
                     county.save();
                 }
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
