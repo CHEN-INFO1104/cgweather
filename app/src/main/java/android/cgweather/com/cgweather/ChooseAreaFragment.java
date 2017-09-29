@@ -7,6 +7,7 @@ import android.cgweather.com.cgweather.db.County;
 import android.cgweather.com.cgweather.db.Province;
 import android.cgweather.com.cgweather.util.HttpUtil;
 import android.cgweather.com.cgweather.util.Utility;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -94,6 +95,12 @@ public class ChooseAreaFragment extends Fragment {
                 }else if(currentLevel == LEVEL_CITY){
                     selectedCity = cityList.get(position);
                     queryCounties();
+                }else  if (currentLevel == LEVEL_COUNTY){
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(),WeatherActivity.class);
+                    intent.putExtra("weather_id",weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
 

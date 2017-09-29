@@ -4,10 +4,12 @@ import android.cgweather.com.cgweather.ChooseAreaFragment;
 import android.cgweather.com.cgweather.db.City;
 import android.cgweather.com.cgweather.db.County;
 import android.cgweather.com.cgweather.db.Province;
+import android.cgweather.com.cgweather.gson.Weather;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.bumptech.glide.util.Util;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,6 +84,20 @@ public class Utility {
 
         }
         return false;
+
+    }
+
+
+    public static Weather handleWeatherResponse(String response){
+        try {
+            JSONObject jsonObject =  new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
 
     }
 }
