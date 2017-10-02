@@ -2,8 +2,10 @@ package android.cgweather.com.cgweather;
 
 import android.cgweather.com.cgweather.gson.Forecast;
 import android.cgweather.com.cgweather.gson.Weather;
+import android.cgweather.com.cgweather.service.AutoUpdateService;
 import android.cgweather.com.cgweather.util.HttpUtil;
 import android.cgweather.com.cgweather.util.Utility;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
@@ -226,6 +228,8 @@ public class WeatherActivity extends AppCompatActivity {
             carWashText.setText(carWash);
             sportText.setText(sport);
             weatherLayout.setVisibility(View.VISIBLE);
+            Intent intent = new Intent(this, AutoUpdateService.class);
+            startService(intent);
 
 
     }
